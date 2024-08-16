@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import Appbar  from "./components/Appbar.jsx";
+import SideBar from './components/SideBar.jsx';
+import { Sidebar, Menu, MenuItem, Submenu, Logo } from "react-mui-sidebar";
+import { Container } from '@mui/material';
 
 function App() {
   return (
+    <>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar />
     </div>
+    </>
   );
 }
 
