@@ -1,7 +1,10 @@
-import { Box, Grid, Card, CardContent, Typography, CardMedia } from '@mui/material';
+import { Box, Grid, Card, CardContent, Typography, CardMedia, List, ListItem } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 
 const PlayList = () => {
+    const SelectedListStyle = {
+
+    }
 
     const [playLists, setPlaylists] = useState([]);
     const [playListSelected, setplayListSelected] = useState(false);
@@ -96,11 +99,17 @@ const PlayList = () => {
                     }
                 </Grid>
             </Box>
-            {playListSelected ? <Box sx={{ flexGrow: 3, mr: 2 }}>
+            {playListSelected ? <Box className="selectedListBox" sx={{ flexGrow: 3, mr: 2, maxHeight:"80vh", overflow:"auto", '&::-webkit-scrollbar': {
+            display: 'none', 
+          },
+          '-ms-overflow-style': 'none', 
+          'scrollbar-width': 'none', }}>
+                <List>
                 {collectionOfItemsinPlatList.map(ele => {
                     console.log(ele)
                     return <>
-                        <Card>
+                    <ListItem >
+                        <Card sx={{width:"300px", height:"300px", zIndex:3}} >
                             <CardContent>
                                 <CardMedia
                                     component="img"
@@ -113,8 +122,10 @@ const PlayList = () => {
                                 </Typography>
                             </CardContent>
                         </Card>
+                    </ListItem>
                     </>
                 })}
+                </List>
             </Box> : <p>No PlayList Selected</p>}
 
         </Box>
