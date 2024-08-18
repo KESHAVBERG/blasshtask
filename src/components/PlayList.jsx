@@ -2,9 +2,6 @@ import { Box, Grid, Card, CardContent, Typography, CardMedia, List, ListItem } f
 import React, { useEffect, useState } from 'react'
 
 const PlayList = () => {
-    const SelectedListStyle = {
-
-    }
 
     const [playLists, setPlaylists] = useState([]);
     const [playListSelected, setplayListSelected] = useState(false);
@@ -74,12 +71,12 @@ const PlayList = () => {
 
     return <>
         <Box sx={{ display: 'flex', p: 3 }}>
-            <Box sx={{ flexShrink: 1, minWidth: 300 }}>
+            <Box sx={{ flexShrink: 2, minWidth: 300 }}>
                 <Grid container spacing={0}>
                     {
                         data.map((playlist, index) => {
                             return <>
-                                <Grid item xs={12} sm={5} m={5} lg={4} key={index}>
+                                <Grid item xs={12} sm={5} m={3} lg={4} key={index}>
                                     <Card onClick={() => addselectedItems(playlist.Post_Ids)}>
                                         <CardContent>
                                             <Typography variant="h6" >
@@ -99,32 +96,33 @@ const PlayList = () => {
                     }
                 </Grid>
             </Box>
-            {playListSelected ? <Box className="selectedListBox" sx={{ flexGrow: 3, mr: 2, maxHeight:"80vh", overflow:"auto", '&::-webkit-scrollbar': {
-            display: 'none', 
-          },
-          '-ms-overflow-style': 'none', 
-          'scrollbar-width': 'none', }}>
+            {playListSelected ? <Box className="selectedListBox" sx={{
+                flexGrow: 2, mr: 1, maxHeight: "80vh", overflow: "auto", '&::-webkit-scrollbar': {
+                    display: 'none',
+                },
+                '-ms-overflow-style': 'none',
+                'scrollbar-width': 'none',
+            }}>
                 <List>
-                {collectionOfItemsinPlatList.map(ele => {
-                    console.log(ele)
-                    return <>
-                    <ListItem >
-                        <Card sx={{width:"300px", height:"300px", zIndex:3}} >
-                            <CardContent>
-                                <CardMedia
-                                    component="img"
-                                    height="200"
-                                    image={ele.Thumbnail_URL}
-                                    alt="GFG Logo"
-                                />
-                                <Typography variant="h6" >
-                                    {ele.Thumbnail_Title}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </ListItem>
-                    </>
-                })}
+                    {collectionOfItemsinPlatList.map(ele => {
+                        console.log(ele)
+                        return <>
+                            <ListItem >
+                                <Card sx={{ width: "300px", height: "300px", zIndex: 3 }} >
+                                    <CardContent>
+                                        <CardMedia
+                                            component="img"
+                                            height="200"
+                                            image={ele.Thumbnail_URL}
+                                        />
+                                        <Typography variant="h6" >
+                                            {ele.Thumbnail_Title}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </ListItem>
+                        </>
+                    })}
                 </List>
             </Box> : <p>No PlayList Selected</p>}
 
